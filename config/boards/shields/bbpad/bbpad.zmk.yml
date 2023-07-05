@@ -1,6 +1,6 @@
 file_format: "1"
 id: bbpad
-name: BBPAD
+name: BBPad
 type: shield
 url: https://mechwild.com/product/bbpad/
 requires: [blackpill]

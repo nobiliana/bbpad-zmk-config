@@ -4,7 +4,7 @@
 if SHIELD_BBPAD
 
 config ZMK_KEYBOARD_NAME
-    default "BBPAD"
+    default "BBPad"
 
 if LVGL
 
