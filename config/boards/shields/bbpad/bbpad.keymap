@@ -13,6 +13,7 @@
 
 #define DEFAULT  0
 #define FN       1
+#define UTIL     2
 
 #define TIMEOUT 300
 
@@ -20,7 +21,17 @@
     status = "okay";
 };
 
+
 / {
+    behaviors {
+        td_lx: tap_dance_layers {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_LAYERS";
+            #binding-cells = <0>;
+            tapping-term-ms = <170>;
+            bindings = <&mo 1>, <&mo 2>;
+        };
+    };
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&encoder_1>;
@@ -32,12 +43,10 @@
         default_layer {
             label = "default layer";
             bindings = <
-                                                               &kp C_MUTE
-                &mo FN       &kp KP_DIVIDE   &kp KP_MULTIPLY   &kp KP_MINUS
-                &kp KP_N7    &kp KP_N8       &kp KP_N9         &kp KP_PLUS
-                &kp KP_N4    &kp KP_N5       &kp KP_N6         &trans
-                &kp KP_N1    &kp KP_N2       &kp KP_N3         &kp KP_ENTER
-                &kp KP_N0    &trans          &kp KP_DOT        &trans
+                &kp KP_N7    &kp KP_N8    &kp KP_N9    &kp KP_N0     &kp KP_ENTER
+                &kp KP_N4    &kp KP_N5    &kp KP_N6    &kp KP_PLUS   &kp KP_MULTIPLY
+                &kp KP_N1    &kp KP_N2    &kp KP_N3    &kp KP_MINUS  &kp KP_DIVIDE
+                &kp KP_DOT   &td_lx       &kp RALT     &kp KP_N7     &kp RCTRL   &kp KP_N7
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         }; 
@@ -45,15 +54,23 @@
         fn_layer {
             label = "fn layer";
             bindings = <
-                                                                     &kp KP_NUM
-                &trans           &trans             &trans           &kp BSPC
-                &trans           &rgb_ug RGB_BRI    &trans           &trans
-                &rgb_ug RGB_EFR  &ext_power EP_TOG  &rgb_ug RGB_EFF  &trans
-                &trans           &rgb_ug RGB_BRD    &bt BT_NXT       &bt BT_CLR
-                &sys_reset       &trans             &bootloader      &trans
+                &kp F9       &kp F10      &kp F11      &kp F12       &kp HOME
+                &kp F5       &kp F6       &kp F7       &kp F8        &kp PGUP
+                &kp F1       &kp F2       &kp F3       &kp F4        &kp PGDN
+                &kp KP_DOT   &trans       &kp KP_N7    &kp KP_N7     &kp END     &kp KP_N7
             >;  
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
 
+        util_layer {
+            label = "util layer";
+            bindings = <
+                &kp F9       &kp F10      &kp F11      &kp F12       &out OUT_TOG
+                &bt BT_SEL 3 &bt BT_SEL 4 &kp F7       &kp F8        &out OUT_USB
+                &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &kp F4        &out OUT_BLE
+                &bt BT_CLR   &trans       &kp KP_N7    &kp KP_N7     &kp KP_NLCK &kp KP_N7
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        }; 
     };
 };
