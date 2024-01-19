@@ -64,7 +64,7 @@
             bindings = <
                 &kp F9       &kp F10      &kp F11      &kp F12       &kp HOME
                 &kp F5       &kp F6       &kp F7       &kp F8        &kp PG_UP
-                &kp F1       &kp F2       &kp F3       &kp F4        &kp PG_DN
+                &kp F1       &kp F2       &kp F3       &kp F4        &kp RSHIFT
                 &kp LC(F)    &trans       &kp RALT     &kp TAB       &kp RSHIFT  &trans
             >;  
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
