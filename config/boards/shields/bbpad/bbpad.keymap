@@ -32,7 +32,7 @@
             tapping-term-ms = <170>;
             bindings = <&mo 1>, <&mo 2>;
         };
-        td_rx: tap_dance_layers {
+        td_rx: tap_dance_layers_right {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_LAYERS_RIGHT";
             #binding-cells = <0>;
